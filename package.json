@@ -20,8 +20,10 @@
   "author": "Abhishek C. Sharma",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.12.2",
     "express": "^4.12.3",
-    "mongoose": "^4.0.1"
+    "mongoose": "^4.0.1",
+    "morgan": "^1.5.2"
   },
   "devDependencies": {
     "gulp": "^3.8.11",
