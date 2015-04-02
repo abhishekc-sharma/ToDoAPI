@@ -2,8 +2,13 @@
   "name": "ToDoAPI",
   "version": "1.0.0",
   "description": "A RESTful ToDo API server using Express",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/portgasd666/ToDoAPI.git"
+  },
   "main": "index.js",
   "scripts": {
+    "start": "node index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -13,5 +18,13 @@
     "Scheduler"
   ],
   "author": "Abhishek C. Sharma",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.12.3",
+    "mongoose": "^4.0.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-jshint": "^1.10.0"
+  }
 }
