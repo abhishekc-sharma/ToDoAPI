@@ -1,0 +1,17 @@
+{
+  "name": "ToDoAPI",
+  "version": "1.0.0",
+  "description": "A RESTful ToDo API server using Express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ToDoList",
+    "ToDo",
+    "Reminder",
+    "Scheduler"
+  ],
+  "author": "Abhishek C. Sharma",
+  "license": "MIT"
+}
