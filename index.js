@@ -28,7 +28,6 @@ mongoose.connection.once('open', function() {
 
 var app = express();
 
-debug('Adding express middleware');
 // Log requests
 app.use(logger('dev'));
 
@@ -37,11 +36,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: 'true'}));
 
 // Add response compression middleware
-app.use(compress());
+app.use(compression());
 
 // Add the routes to the app
 app.use('/', routes);
+debug('Added routes');
 
-app.listen(NODEJS_PORT, function() {
+debug('Added express middleware');
+
+/*app.listen(NODEJS_PORT, function() {
   debug('Listening on port %d', NODEJS_PORT);
-});
+});*/
+
+module.exports = app;
