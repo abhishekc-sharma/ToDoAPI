@@ -1,13 +1,25 @@
 'use strict';
 
 var request = require('supertest');
-var app = require('../.');
+var app = require('../server').app;
+var mongoose = require('mongoose');
+
+var MONGODB_URL = process.env.MONGODB_URL || "localhost/test";
 
 var request = request(app);
 
 describe('/lists/:listId/items', function() {
   var persistId;
   var itemId;
+  before(function(done) {
+    // connect to mongodb with mongoose
+    mongoose.connect(MONGODB_URL);
+
+    mongoose.connection.on('error', done);
+
+    mongoose.connection.once('open', done);
+  });
+
   before(function(done) {
     request
       .post('/lists')
@@ -34,6 +46,9 @@ describe('/lists/:listId/items', function() {
       });
   });
 
+  after(function() {
+    mongoose.disconnect();
+  });
 
   it('Should fetch the items from a list, initially empty', function(done) {
     request

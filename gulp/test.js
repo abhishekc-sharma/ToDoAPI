@@ -6,7 +6,7 @@ var istanbul = require('gulp-istanbul');
 
 var isWatching = false;
 
-gulp.task('test', function(done) {
+gulp.task('test_coverage', function(done) {
   gulp.src(['./**/*.js', '!node_modules/**/*', '!test/**/*'])
     .pipe(istanbul())
     .pipe(istanbul.hookRequire())
@@ -21,10 +21,10 @@ gulp.task('test', function(done) {
     });
 });
 
-gulp.on('stop', function() {
-  if(!isWatching) {
-    process.nextTick(function() {
-      process.exit(0);
+gulp.task('test', function(done) {
+  return gulp.src(['./test/**/*.js'])
+    .pipe(mocha())
+    .once('error', function() {
+      process.exit(1);
     });
-  }
 });

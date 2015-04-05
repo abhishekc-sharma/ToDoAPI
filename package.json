@@ -8,8 +8,9 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=server MONGODB_URL=localhost/thetodoproject node server",
-    "test": "gulp test"
+    "start": "DEBUG=server MONGODB_URL=localhost/thetodoproject node index",
+    "test": "gulp test",
+    "coverage": "gulp test_coverage"
   },
   "keywords": [
     "ToDoList",

@@ -1,11 +1,24 @@
 'use strict';
 
 var request = require('supertest');
-var app = require('../.');
+var app = require('../server').app;
+var mongoose = require('mongoose');
+
+var MONGODB_URL = process.env.MONGODB_URL || "localhost/test";
 
 request = request.agent(app);
 
 describe('/', function() {
+
+  before(function(done) {
+    // connect to mongodb with mongoose
+    mongoose.connect(MONGODB_URL);
+
+    mongoose.connection.on('error', done);
+
+    mongoose.connection.once('open', done);
+  });
+
   it('should respond with welcome message on get', function(done) {
     request
       .get('/')
@@ -80,5 +93,9 @@ describe('/lists', function() {
     request
       .delete('/lists/' + persistId)
       .expect(404, /error/, done);
+  });
+
+  after(function() {
+    mongoose.disconnect();
   });
 });
