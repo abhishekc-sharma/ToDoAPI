@@ -14,7 +14,7 @@ mongoose.connection.on('error', function() {
 });
 
 mongoose.connection.once('open', function() {
-  debug('Mongoose Successfully Connected');
+  debug('Mongoose Successfully Connected ' + MONGODB_URL);
 });
 
 start();

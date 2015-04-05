@@ -7,7 +7,8 @@ var Schema = mongoose.Schema;
 var ItemSchema = Schema({
   description: {
     type: String,
-    required: true
+    required: true,
+    validate: /((\s*)[\S]+(\s*))+/
   },
 
   belongsTo: {

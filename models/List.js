@@ -7,7 +7,8 @@ var Schema = mongoose.Schema;
 var ListSchema = Schema({
   name: {
     type: String,
-    required: true
+    required: true,
+    validate: /((\s*)[\S]+(\s*))+/
   },
 
   items: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Item' }]

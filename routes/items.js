@@ -55,7 +55,7 @@ function attach() {
 
       newItem.save(function(err, it) {
         if(err || !it) {
-          return res.json({'error': 'Failed to add new item to list'});
+          return res.status(400).json({'error': 'Failed to add new item to list, Validation error'});
         }
 
         List.findByIdAndUpdate(listId, {$push: {'items': it.id}}, function(err) {
@@ -121,7 +121,7 @@ function attach() {
         item.description = newDescription;
         item.save(function(err, it) {
           if(err) {
-            return res.json({'error': 'Error updating item'});
+            return res.status(400).json({'error': 'Error updating item, Validation error'});
           }
 
           res.json(it);

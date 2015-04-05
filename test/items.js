@@ -90,6 +90,13 @@ describe('/lists/:listId/items', function() {
       .expect(400, /Need data/, done);
   });
 
+  it('Should fail when given invalid description on post', function(done) {
+    request
+      .post('/lists/'+ persistId + '/items')
+      .send({'description': '   '})
+      .expect(400, /Validation/, done);
+  });
+
   it('Should modify item in list', function(done) {
     request
       .put('/lists/' + persistId + '/items/' + itemId)
@@ -111,6 +118,13 @@ describe('/lists/:listId/items', function() {
       .put('/lists/' + persistId + '/items/' + itemId + 'a')
       .send({'description': 'Modified desc'})
       .expect(404, /Invalid itemId/, done);
+  });
+
+  it('Should fail when given invalid description on put', function(done) {
+    request
+      .put('/lists/' + persistId + '/items/' + itemId)
+      .send({description: '    '})
+      .expect(400, /Validation/, done);
   });
 
 

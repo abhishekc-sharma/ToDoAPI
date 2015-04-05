@@ -37,7 +37,7 @@ function attach() {
     // save the newly created list
     newList.save(function(err, l) {
       if(err) {
-        return res.json({'error': 'Failed to add list'});
+        return res.status(400).json({'error': 'Failed to add list, Validation Error'});
       }
       // send back the newly created list
       res.json(l);
@@ -90,7 +90,7 @@ function attach() {
       // save modified instance
       list.save(function(err, l) {
         if(err) {
-          return res.json({'error': 'Failed to update list'});
+          return res.status(400).json({'error': 'Failed to update list, Validation error'});
         }
 
         res.json(l);

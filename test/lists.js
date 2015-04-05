@@ -61,6 +61,13 @@ describe('/lists', function() {
       });
   });
 
+  it('should give error when invalid name is give on post', function(done) {
+    request
+      .post('/lists')
+      .send({name: '    '})
+      .expect(400, /Validation/, done);
+  });
+
   it('should allow modification of a list and change it on db', function(done) {
     request
       .put('/lists/' + persistId)
@@ -81,6 +88,13 @@ describe('/lists', function() {
       .put('/lists/' + invalidId)
       .send({name: 'not gonna matter anyway'})
       .expect(404, /error/, done);
+  });
+
+  it('should give error when invalid name is given on put', function(done) {
+    request
+      .put('/lists/' + persistId)
+      .send({name: '    '})
+      .expect(400, /Validation/, done);
   });
 
   it('should allow deletion of a list and also change it on db', function(done) {
