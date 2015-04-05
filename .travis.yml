@@ -8,6 +8,9 @@ before_script:
   - npm install coveralls
   - npm install mocha-lcov-reporter
 
+services:
+  - mongodb
+
 script: npm test
 
 after_success:
