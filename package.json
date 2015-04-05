@@ -9,8 +9,7 @@
   "main": "index.js",
   "scripts": {
     "start": "DEBUG=server MONGODB_URL=localhost/thetodoproject node index",
-    "test": "gulp test",
-    "coverage": "gulp test_coverage"
+    "test": "gulp test"
   },
   "keywords": [
     "ToDoList",
@@ -29,12 +28,14 @@
     "morgan": "^1.5.2"
   },
   "devDependencies": {
+    "coveralls": "^2.11.2",
     "gulp": "^3.8.11",
     "gulp-istanbul": "^0.7.0",
     "gulp-jshint": "^1.10.0",
     "gulp-mocha": "^2.0.1",
     "istanbul": "^0.3.13",
     "mocha": "^2.2.1",
+    "mocha-lcov-reporter": "0.0.2",
     "supertest": "^0.15.0"
   }
 }
