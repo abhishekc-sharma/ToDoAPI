@@ -2,9 +2,10 @@ language: node_js
 node_js:
   - "0.12"
 
+sudo: required
+
 before_script:
   - npm install -g istanbul
-  - npm install -g mocha
   - npm install coveralls
   - npm install mocha-lcov-reporter
 
@@ -13,5 +14,4 @@ services:
 
 script: npm test
 
-after_success:
-    istanbul cover mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+after_script: NODE_ENV=test istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
