@@ -4,6 +4,7 @@ var start = require('./server').startServer;
 var debug = require('debug')('server');
 var mongoose = require('mongoose');
 
+// uses MONGO DB
 var MONGODB_URL = process.env.MONGODB_URL || "localhost/test";
 
 // connect to mongodb with mongoose
